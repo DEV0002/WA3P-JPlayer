@@ -10,7 +10,10 @@
  * V0.2.1
  * 		Able To Play Properly most of the time*
  * 		*With Random Fuck-Ups
+ * 
+ * V0.2.2
  * 		Source replaced with decompiled jar after accident, weird optimizations
+ * 		Automatically directs to path of file
  * 
  * Future Updates:
  * 		MP3 Support
@@ -37,6 +40,7 @@ import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
+
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.SourceDataLine;
@@ -94,16 +98,17 @@ public class Main {
 
    public Main() {
       File[] args = null;
-      this.fc.setDialogTitle("Choose Audio Files or a WA3P File: ");
-      this.fc.setMultiSelectionEnabled(true);
-      this.fc.setFileSelectionMode(0);
-      this.fc.setAcceptAllFileFilterUsed(false);
+      fc.setDialogTitle("Choose Audio Files or a WA3P File: ");
+      fc.setMultiSelectionEnabled(true);
+      fc.setFileSelectionMode(0);
+      fc.setAcceptAllFileFilterUsed(false);
+      fc.setCurrentDirectory(new File("."));
       FileNameExtensionFilter f1 = new FileNameExtensionFilter("WAV, AAC, MP3 Files", new String[]{"wav", "aac", "mp3"});
-      this.fc.addChoosableFileFilter(f1);
-      this.fc.setFileFilter(new FileNameExtensionFilter("WA3P File", new String[]{"wa3p"}));
-      int rv = this.fc.showOpenDialog((Component)null);
+      fc.addChoosableFileFilter(f1);
+      fc.setFileFilter(new FileNameExtensionFilter("WA3P File", new String[]{"wa3p"}));
+      int rv = fc.showOpenDialog(null);
       if (rv == 0)
-         args = this.fc.getSelectedFiles();
+         args = fc.getSelectedFiles();
       try {
          if (args == null)
             throw new FileNotFoundException("Please Select Files!");
