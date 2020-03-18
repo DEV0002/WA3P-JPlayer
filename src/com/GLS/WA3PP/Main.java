@@ -69,7 +69,7 @@ public class Main {
    private boolean bSkip = false;
 
    private void createFrame() {
-      this.frame = new JFrame("WA3P Player V0.2.1");
+      this.frame = new JFrame("WA3P Player V0.2.2");
       this.pb.setMinimum(0);
       this.pb.setStringPainted(false);
       this.frame.setSize(300, 200);
