@@ -15,6 +15,9 @@
  * 		Source replaced with decompiled jar after accident, weird optimizations
  * 		Automatically directs to path of file
  * 
+ * V0.2.3
+ * 		Disabled AAC & MP3 Selection Until Supported
+ * 
  * Future Updates:
  * 		MP3 Support
  * 		AAC Support
@@ -69,7 +72,7 @@ public class Main {
    private boolean bSkip = false;
 
    private void createFrame() {
-      this.frame = new JFrame("WA3P Player V0.2.2");
+      this.frame = new JFrame("WA3P Player V0.2.3");
       this.pb.setMinimum(0);
       this.pb.setStringPainted(false);
       this.frame.setSize(300, 200);
@@ -103,7 +106,7 @@ public class Main {
       fc.setFileSelectionMode(0);
       fc.setAcceptAllFileFilterUsed(false);
       fc.setCurrentDirectory(new File("."));
-      FileNameExtensionFilter f1 = new FileNameExtensionFilter("WAV, AAC, MP3 Files", new String[]{"wav", "aac", "mp3"});
+      FileNameExtensionFilter f1 = new FileNameExtensionFilter("WAV Files", new String[]{"wav"});
       fc.addChoosableFileFilter(f1);
       fc.setFileFilter(new FileNameExtensionFilter("WA3P File", new String[]{"wa3p"}));
       int rv = fc.showOpenDialog(null);
